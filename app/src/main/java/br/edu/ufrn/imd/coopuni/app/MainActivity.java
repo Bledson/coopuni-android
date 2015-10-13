@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void setupTabIcons() {
-    tabLayout.getTabAt(0).setIcon(R.drawable.ic_comment);
-    tabLayout.getTabAt(1).setIcon(R.drawable.ic_like);
+    tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+    tabLayout.getTabAt(1).setIcon(R.drawable.ic_account);
   }
 
   @Override
