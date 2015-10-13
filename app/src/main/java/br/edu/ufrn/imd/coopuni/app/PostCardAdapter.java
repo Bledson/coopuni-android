@@ -13,41 +13,41 @@ import java.util.List;
 
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHolder> {
 
-  List<Post> mItems;
+  List<Post> posts;
 
   public PostCardAdapter() {
     super();
-    mItems = new ArrayList<Post>();
+    posts = new ArrayList<Post>();
     Post post = new Post();
     post.setDescription("The Great Barrier Reef 1");
     post.setUsername("andrezap");
     post.setPhoto(String.valueOf(R.drawable.ic_post));
-    mItems.add(post);
+    posts.add(post);
 
     post = new Post();
     post.setUsername("andrezap");
     post.setDescription("The Great Barrier Reef 2 ");
     post.setPhoto(String.valueOf(R.drawable.ic_post));
-    mItems.add(post);
+    posts.add(post);
 
     post = new Post();
     post.setUsername("andrezap");
     post.setDescription("The Great Barrier Reef 3");
     post.setPhoto(String.valueOf(R.drawable.ic_post));
-    mItems.add(post);
+    posts.add(post);
   }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
     View v = LayoutInflater.from(viewGroup.getContext())
-        .inflate(R.layout.recycler_view_card_item, viewGroup, false);
+        .inflate(R.layout.card_post, viewGroup, false);
     ViewHolder viewHolder = new ViewHolder(v);
     return viewHolder;
   }
 
   @Override
   public void onBindViewHolder(ViewHolder viewHolder, int i) {
-    Post post = mItems.get(i);
+    Post post = posts.get(i);
     viewHolder.description.setText(post.getDescription());
     viewHolder.userName.setText(post.getUsername());
     viewHolder.imgPost.setImageResource(Integer.parseInt(post.getPhoto()));
@@ -55,7 +55,7 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
 
   @Override
   public int getItemCount() {
-    return mItems.size();
+    return posts.size();
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {

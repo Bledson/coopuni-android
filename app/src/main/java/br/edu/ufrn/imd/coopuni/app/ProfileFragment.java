@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,9 @@ public class ProfileFragment extends Fragment {
 
     layoutManager = new LinearLayoutManager(getContext());
     recyclerView.setLayoutManager(layoutManager);
+
+    RecyclerViewHeader header = RecyclerViewHeader.fromXml(getContext(), R.layout.header_profile);
+    header.attachTo(recyclerView);
 
     adapter = new PostCardAdapter();
     recyclerView.setAdapter(adapter);
