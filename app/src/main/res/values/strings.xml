@@ -4,4 +4,19 @@
   <string name="action_settings">Settings</string>
   <string name="radio_myposts">Minhas Publicações</string>
   <string name="radio_postsfollow">Publicações que sigo</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Logar</string>
+    <string name="error_invalid_email">Email inválidp</string>
+    <string name="error_invalid_password">Senha deve ser maior</string>
+    <string name="error_incorrect_password">Senha incorreta</string>
+    <string name="error_field_required">Campo obrigatório</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_login2">Login2Activity</string>
 </resources>
