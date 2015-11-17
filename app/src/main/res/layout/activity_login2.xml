@@ -13,9 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/usernametxt"
+        android:hint="usuario"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -23,8 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:hint="email"
         android:ems="10"
         android:id="@+id/pwtxt"
+        android:layout_marginTop="37dp"
         android:layout_below="@+id/usernametxt"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -34,13 +38,36 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Login com SIGAA"
+        android:onClick="logarsigaa"
+        android:id="@+id/btnLoginSigaa"
+        android:layout_marginTop="109dp"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:id="@+id/firstDivider"
+        android:layout_height="2dp"
+        android:layout_width="fill_parent"
+        android:background="#d8d8de"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Login"
         android:onClick="logar"
         android:id="@+id/btnLogin"
+        android:layout_marginTop="45dp"
         android:layout_below="@+id/pwtxt"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="60dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package br.edu.ufrn.imd.coopuni.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
           String nome = jsonObject.getString("nome");
 
           jsonResponse += "Name: " + nome + "\n\n";
-
-
           username.setText(jsonResponse);
         } catch (JSONException e) {
           e.printStackTrace();
