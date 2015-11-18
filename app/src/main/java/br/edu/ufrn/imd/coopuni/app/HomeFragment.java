@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
     layoutManager = new LinearLayoutManager(getContext());
     recyclerView.setLayoutManager(layoutManager);
 
-    adapter = new PostCardAdapter();
+    adapter = new PostCardAdapter(this.getActivity());
     recyclerView.setAdapter(adapter);
     return view;
   }

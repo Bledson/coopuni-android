@@ -24,6 +24,17 @@ public class Post implements Serializable {
 
   private String username;
 
+  public Post() {}
+
+  public Post(String category, String type, String description, int likes, int downvotes, String username) {
+    this.category = category;
+    this.type = type;
+    this.description = description;
+    this.likes = likes;
+    this.downvotes = downvotes;
+    this.username = username;
+  }
+
   public String getUsername() {
     return username;
   }
