@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import br.edu.ufrn.imd.coopuni.model.Post;
+
 public class HomeFragment extends Fragment {
   private static ArrayList<Post> posts;
 

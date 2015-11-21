@@ -11,6 +11,8 @@ import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
 
 import java.util.ArrayList;
 
+import br.edu.ufrn.imd.coopuni.model.Post;
+
 public class ProfileFragment extends Fragment {
   private static ArrayList<Post> posts;
 

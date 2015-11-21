@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ufrn.imd.coopuni.app.Post;
+import br.edu.ufrn.imd.coopuni.model.Post;
 
 /**
  * Created by andreza on 17/11/15.
