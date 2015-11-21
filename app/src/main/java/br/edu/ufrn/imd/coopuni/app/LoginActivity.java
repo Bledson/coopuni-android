@@ -89,8 +89,8 @@ public class LoginActivity extends AppCompatActivity {
         };
         int socketTimeout = 30000;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        stringRequest.setRetryPolicy(policy);
+//        RetryPolicy policy = new ?DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+//        stringRequest.setRetryPolicy(policy);
         requestQueue.add(stringRequest);
     }
 
