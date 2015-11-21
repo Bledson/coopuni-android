@@ -1,79 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
+    tools:context="br.edu.ufrn.imd.coopuni.app.RegisterActivity">
 
-  <android.support.design.widget.TextInputLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/usernametextlayout"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="50dp">
-
-    <EditText
-      android:layout_width="match_parent"
+  <TextView
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:id="@+id/usernametxt"
-      android:hint="Nome de usuário"
+      android:text="CoopUni"
+      android:id="@+id/textView"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
+      android:textSize="60px"
       android:textColor="@android:color/white" />
+
+
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/inputuser"
+      android:layout_marginTop="28dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+      <EditText
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:inputType="textPersonName"
+          android:hint="nome do usuário"
+          android:textColorHint="@android:color/white"
+          android:ems="10"
+          android:id="@+id/usernametxt"
+          android:textColor="@android:color/white"
+          android:layout_below="@+id/bullhorn"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="37dp" />
   </android.support.design.widget.TextInputLayout>
 
-  <android.support.design.widget.TextInputLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/senhatextlayout"
-    android:layout_below="@+id/usernametextlayout"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
 
-    <EditText
-      android:layout_width="match_parent"
+
+  <android.support.design.widget.TextInputLayout
+      android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/pwtxt"
-      android:hint="Senha"
-      android:inputType="textPassword"
-      android:textColor="@android:color/white" />
+      android:id="@+id/inputpw"
+      android:layout_below="@+id/inputuser"
+      android:layout_centerVertical="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true">
+
+      <EditText
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@android:color/white"
+          android:inputType="textPassword"
+          android:ems="10"
+          android:id="@+id/pwtxt"
+          android:hint="senha"
+          android:textColorHint="@android:color/white"
+          android:layout_centerVertical="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true" />
   </android.support.design.widget.TextInputLayout>
 
   <Button
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnLogin"
-    android:text="Login"
-    android:background="@android:color/white"
-    android:textColor="@color/colorPrimary"
-    android:onClick="logar"
-    android:layout_below="@+id/senhatextlayout"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="34dp" />
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Login"
+      android:background="@android:color/white"
+      android:textColor="@color/colorPrimary"
+      android:id="@+id/btnLogin"
+      android:onClick="logar"
+      android:layout_marginTop="28dp"
+      android:layout_below="@+id/inputpw"
+      android:layout_alignLeft="@+id/textView12"
+      android:layout_alignStart="@+id/textView12"
+      android:layout_alignRight="@+id/textView12"
+      android:layout_alignEnd="@+id/textView12" />
 
   <Button
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnLoginSigaa"
-    android:text="Login via SIGAA"
-    android:background="@android:color/white"
-    android:textColor="@color/colorPrimary"
-    android:onClick="logarsigaa"
-    android:layout_centerVertical="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Login com SIGAA"
+      android:onClick="logarsigaa"
+      android:background="@android:color/white"
+      android:textColor="@color/colorPrimary"
+      android:id="@+id/btnLoginSigaa"
+      android:layout_marginTop="49dp"
+      android:layout_below="@+id/btnLogin"
+      android:layout_alignLeft="@+id/btnLogin"
+      android:layout_alignStart="@+id/btnLogin"
+      android:layout_alignRight="@+id/btnLogin"
+      android:layout_alignEnd="@+id/btnLogin" />
 
-  <Button
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/button"
-    android:background="@android:color/transparent"
-    android:text="Criar conta"
-    android:textColor="@android:color/white"
-    android:shadowColor="#3F51B5"
-    android:layout_marginBottom="20dp"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="Não possui conta? cadastre-se"
+      android:id="@+id/textView12"
+      android:onClick="register"
+      android:textColor="@android:color/white"
+      android:layout_marginBottom="39dp"
+      android:textSize="15dp"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

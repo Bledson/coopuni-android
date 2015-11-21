@@ -59,6 +59,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void register(View v) {
+        Intent i = new Intent(this,RegisterActivity.class);
+        startActivity(i);
+    }
 
     public void logar(View v) {
         String user = txtusername.getText().toString();
@@ -100,11 +104,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        finish();
-    }
 
     public void logarsigaa(View v) {
         Intent i = new Intent(this, MainActivity.class);
