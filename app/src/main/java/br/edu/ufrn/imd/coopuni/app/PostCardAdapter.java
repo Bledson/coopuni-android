@@ -54,8 +54,8 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
             });
     int socketTimeout = 30000;
     RequestQueue requestQueue = Volley.newRequestQueue(ctx);
-    RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-    stringRequest.setRetryPolicy(policy);
+//    RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+//    stringRequest.setRetryPolicy(policy);
     requestQueue.add(stringRequest);
   }
 

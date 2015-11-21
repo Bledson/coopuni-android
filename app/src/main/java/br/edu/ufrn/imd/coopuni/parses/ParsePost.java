@@ -17,6 +17,7 @@ public class ParsePost {
     private List<Post> listpost;
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_MEMBER = "member";
+    public static final String KEY_MEMBER_NAME = "username";
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_TYPE = "type";
     public static final String KEY_AREA = "area";
@@ -43,7 +44,7 @@ public class ParsePost {
                 JSONObject post = posts.getJSONObject(i);
 
                 JSONObject member = post.getJSONObject(KEY_MEMBER);
-                String membername = member.getString(KEY_NAME);
+                String membername = member.getString(KEY_MEMBER_NAME);
 
                 String description = post.getString(KEY_DESCRIPTION);
 

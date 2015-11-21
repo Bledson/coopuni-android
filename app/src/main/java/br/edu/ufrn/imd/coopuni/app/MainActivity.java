@@ -1,6 +1,8 @@
 package br.edu.ufrn.imd.coopuni.app;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -31,9 +33,16 @@ public class MainActivity extends AppCompatActivity {
   private TextView username;
 
   @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+  }
+
+  @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
@@ -43,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
     tabLayout = (TabLayout) findViewById(R.id.tabs);
     tabLayout.setupWithViewPager(viewPager);
     setupTabIcons();
-
-
-
     username = (TextView) findViewById(R.id.username);
+
+
   }
 
   private void setupTabIcons() {

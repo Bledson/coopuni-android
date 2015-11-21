@@ -1,7 +1,9 @@
 package br.edu.ufrn.imd.coopuni.app;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,51 +42,69 @@ public class Login2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPref = getPreferences(Activity.MODE_PRIVATE);
+        String token  = sharedPref.getString("token","");
+        if(token != "") {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
         setContentView(R.layout.activity_login2);
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtpw = (TextView) findViewById(R.id.pwtxt);
         txtusername = (TextView) findViewById(R.id.usernametxt);
+
+
     }
 
 
     public void logar(View v) {
-//        String user = txtusername.getText().toString();
-//        String pw = txtpw.getText().toString();
-//        String LOGIN_URL = url + user + "/" + pw;
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, LOGIN_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        if(response != null){
-//                            openHome();
-//                        }else {
-//                            Toast.makeText(Login2Activity.this, response, Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(Login2Activity.this,error.toString(),Toast.LENGTH_LONG ).show();
-//                    }
-//                }){
-//
-//        };
-//        int socketTimeout = 30000;
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        stringRequest.setRetryPolicy(policy);
-//        requestQueue.add(stringRequest);
-        openHome();
+        String user = txtusername.getText().toString();
+        String pw = txtpw.getText().toString();
+        String LOGIN_URL = url + user + "/" + pw;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LOGIN_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response != null){
+                            openHome(response);
+                        }else {
+                            Toast.makeText(Login2Activity.this, response, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Login2Activity.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    }
+                }){
+
+        };
+        int socketTimeout = 30000;
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        requestQueue.add(stringRequest);
     }
 
-    private void openHome(){
+    private void openHome(String token){
+        SharedPreferences sharedPref = getPreferences(Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("token", token);
+        editor.commit();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 
     public void logarsigaa(View v) {
         Intent i = new Intent(this, MainActivity.class);
