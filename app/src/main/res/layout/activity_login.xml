@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="br.edu.ufrn.imd.coopuni.app.LoginActivity"
-    android:weightSum="1">
+<RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimary"
+  xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/usernametxt"
-        android:hint="usuario"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+  <android.support.design.widget.TextInputLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/usernametextlayout"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="50dp">
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="email"
-        android:ems="10"
-        android:id="@+id/pwtxt"
-        android:layout_marginTop="37dp"
-        android:layout_below="@+id/usernametxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/usernametxt"
+      android:hint="Nome de usuário"
+      android:textColor="@android:color/white" />
+  </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login com SIGAA"
-        android:onClick="logarsigaa"
-        android:id="@+id/btnLoginSigaa"
-        android:layout_marginTop="109dp"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+  <android.support.design.widget.TextInputLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/senhatextlayout"
+    android:layout_below="@+id/usernametextlayout"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
 
-    <View
-        android:id="@+id/firstDivider"
-        android:layout_height="2dp"
-        android:layout_width="fill_parent"
-        android:background="#d8d8de"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/pwtxt"
+      android:hint="Senha"
+      android:inputType="textPassword"
+      android:textColor="@android:color/white" />
+  </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:onClick="logar"
-        android:id="@+id/btnLogin"
-        android:layout_marginTop="45dp"
-        android:layout_below="@+id/pwtxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+  <Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btnLogin"
+    android:text="Login"
+    android:background="@android:color/white"
+    android:textColor="@color/colorPrimary"
+    android:onClick="logar"
+    android:layout_below="@+id/senhatextlayout"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="34dp" />
+
+  <Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btnLoginSigaa"
+    android:text="Login via SIGAA"
+    android:background="@android:color/white"
+    android:textColor="@color/colorPrimary"
+    android:onClick="logarsigaa"
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+  <Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/button"
+    android:background="@android:color/transparent"
+    android:text="Criar conta"
+    android:textColor="@android:color/white"
+    android:shadowColor="#3F51B5"
+    android:layout_marginBottom="20dp"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
 </RelativeLayout>
