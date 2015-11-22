@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ufrn.imd.coopuni.model.Post;
-import br.edu.ufrn.imd.coopuni.parses.ParsePost;
+import br.edu.ufrn.imd.coopuni.parsers.ParsePost;
 
 
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHolder> {
