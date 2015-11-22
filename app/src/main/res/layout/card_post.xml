@@ -72,8 +72,10 @@
           android:layout_height="wrap_content"
           android:src="@drawable/ic_down"
           android:background="@drawable/round_corner"
+          android:layout_alignParentTop="true"
           android:layout_toRightOf="@+id/likeButton"
-          android:layout_toEndOf="@+id/likeButton" />
+          android:layout_toEndOf="@+id/likeButton"
+          android:layout_marginLeft="8dp" />
 
         <ImageButton
           android:id="@+id/comment"
