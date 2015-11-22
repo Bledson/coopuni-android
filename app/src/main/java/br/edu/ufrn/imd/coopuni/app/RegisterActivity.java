@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText pwtxt;
     private EditText usertxt;
     private EditText emailtxt;
-    private String url = "http://10.0.0.104:8080/coopuni/rest/members";
+    private String url = "http://10.0.0.105:8080/coopuni/rest/members";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

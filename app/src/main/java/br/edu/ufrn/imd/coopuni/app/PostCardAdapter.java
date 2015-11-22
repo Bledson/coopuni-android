@@ -36,7 +36,7 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
 
 
   public void fetch() {
-    String JSON_URL = "http://10.0.0.104:8080/coopuni/rest/posts";
+    String JSON_URL = "http://10.0.0.105:8080/coopuni/rest/posts";
     StringRequest stringRequest = new StringRequest(JSON_URL,
             new Response.Listener<String>() {
               @Override

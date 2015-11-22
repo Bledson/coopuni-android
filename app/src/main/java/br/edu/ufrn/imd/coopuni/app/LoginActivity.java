@@ -25,7 +25,7 @@ import br.edu.ufrn.imd.coopuni.request.OAuthTokenRequest;
 public class LoginActivity extends AppCompatActivity {
 
 
-    private String url = "http://10.0.0.104:8080/coopuni/rest/members/login/";
+    private String url = "http://10.0.0.105:8080/coopuni/rest/members/login/";
     private static String TAG = MainActivity.class.getSimpleName();
     private Button btnLogin;
 
@@ -89,8 +89,8 @@ public class LoginActivity extends AppCompatActivity {
         };
         int socketTimeout = 30000;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        RetryPolicy policy = new ?DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        stringRequest.setRetryPolicy(policy);
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
         requestQueue.add(stringRequest);
     }
 
