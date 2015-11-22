@@ -131,10 +131,10 @@
         android:onClick="login"
         android:id="@+id/textView8"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/btncadastrar"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="26dp" />
+      android:layout_marginTop="38dp"
+      android:layout_below="@+id/btncadastrar"
+      android:layout_alignRight="@+id/bullhorn"
+      android:layout_alignEnd="@+id/bullhorn" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -157,12 +157,12 @@
         android:id="@+id/btncadastrar"
         android:background="@android:color/white"
         android:textColor="@color/colorPrimary"
-        android:layout_below="@+id/inputpw"
-        android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/textView11"
-        android:layout_alignEnd="@+id/textView11"
-        android:layout_alignLeft="@+id/textView9"
-        android:layout_alignStart="@+id/textView9" />
+      android:layout_marginTop="40dp"
+      android:layout_below="@+id/inputpw"
+      android:layout_alignLeft="@+id/textView10"
+      android:layout_alignStart="@+id/textView10"
+      android:layout_alignRight="@+id/textView10"
+      android:layout_alignEnd="@+id/textView10" />
 
 
 </RelativeLayout>
