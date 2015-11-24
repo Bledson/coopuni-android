@@ -7,10 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import br.edu.ufrn.imd.coopuni.model.Post;
 
 import java.util.ArrayList;
-
-import br.edu.ufrn.imd.coopuni.model.Post;
 
 public class HomeFragment extends Fragment {
   private static ArrayList<Post> posts;
@@ -18,9 +18,6 @@ public class HomeFragment extends Fragment {
   RecyclerView recyclerView;
   RecyclerView.LayoutManager layoutManager;
   RecyclerView.Adapter adapter;
-
-  public HomeFragment() {
-  }
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +27,7 @@ public class HomeFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_home, container, false);
-    recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+    recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
     recyclerView.setHasFixedSize(true);
 
     layoutManager = new LinearLayoutManager(getContext());
@@ -39,5 +36,21 @@ public class HomeFragment extends Fragment {
     adapter = new PostCardAdapter(this.getActivity());
     recyclerView.setAdapter(adapter);
     return view;
+  }
+
+  public void like(View view) {
+    //
+  }
+
+  public void downvote() {
+    //
+  }
+
+  public void comment() {
+    //
+  }
+
+  public void share() {
+    //
   }
 }

@@ -26,6 +26,10 @@
         </activity>
         <activity android:name=".RegisterActivity" >
         </activity>
+        <activity
+            android:name=".RegisterPost"
+            android:label="@string/title_activity_register_post" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,27 +1,28 @@
 package br.edu.ufrn.imd.coopuni.app;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import br.edu.ufrn.imd.coopuni.request.OAuthTokenRequest;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import br.edu.ufrn.imd.coopuni.request.OAuthTokenRequest;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +30,30 @@ public class MainActivity extends AppCompatActivity {
   private TabLayout tabLayout;
   private Toolbar toolbar;
   private ViewPager viewPager;
+  private FloatingActionButton fab;
   private String jsonResponse;
   private TextView username;
+
+  public void like(View view) {
+    ImageButton likeBtn = (ImageButton) findViewById(R.id.likeButton);
+  }
+
+  public void downvote(View view) {
+    ImageButton downovteBtn = (ImageButton) findViewById(R.id.downvote);
+  }
+
+  public void comment(View view) {
+
+  }
+
+  public void share(View view) {
+
+  }
+
+  public void openRegisterPost(View view) {
+    Intent intent = new Intent(this, RegisterPost.class);
+    startActivity(intent);
+  }
 
   @Override
   public void onBackPressed() {
@@ -41,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -54,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
     setupTabIcons();
     username = (TextView) findViewById(R.id.username);
 
-
+    fab = (FloatingActionButton) findViewById(R.id.fab);
+    fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext
+        (), R.color.accent)));
   }
 
   private void setupTabIcons() {
@@ -62,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     tabLayout.getTabAt(1).setIcon(R.drawable.ic_account);
   }
 
-  private void reqJson(){
+  private void reqJson() {
 
     String urlJsonObj = "http://apitestes.info.ufrn.br/usuario-services/services/usuario/info";
     OAuthTokenRequest.getInstance().resourceRequest(this, Request.Method.GET, urlJsonObj, new Response.Listener<String>() {
@@ -85,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
       public void onErrorResponse(VolleyError error) {
         VolleyLog.d("SAIDA", "Error: " + error.getMessage());
         Toast.makeText(getApplicationContext(),
-                error.getMessage(), Toast.LENGTH_SHORT).show();
+            error.getMessage(), Toast.LENGTH_SHORT).show();
         // hide the progress dialog
       }
     });

@@ -8,4 +8,5 @@
   <color name="textColorSecondary">#727272</color>
   <color name="icon">#FFFFFF</color>
   <color name="divider">#B6B6B6</color>
+  <color name="accent">#ff4081</color>
 </resources>

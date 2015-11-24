@@ -19,4 +19,7 @@
         completions."
     </string>
     <string name="title_activity_login2">Login2Activity</string>
+  <string name="title_activity_register_post">RegisterPost</string>
+
+  <string name="hello_world">Hello world!</string>
 </resources>

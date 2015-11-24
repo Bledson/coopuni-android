@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="areas_array">
+    <item>CIVT IMD</item>
+    <item>Setor 3</item>
+    <item>ECT</item>
+  </string-array>
+</resources>
