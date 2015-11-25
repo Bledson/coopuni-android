@@ -128,7 +128,7 @@ public class RegisterPostActivity extends AppCompatActivity {
 
   public void registerPost(View v) {
     JSONObject postObject = this.createJsonObj();
-    String url = "http://10.0.0.104:8080/coopuni/rest/posts";
+    String url = "http://10.3.129.150:8080/coopuni/rest/posts";
     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postObject,
             new Response.Listener<JSONObject>() {
               @Override
