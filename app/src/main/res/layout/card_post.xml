@@ -85,7 +85,8 @@
           android:src="@drawable/ic_comment"
           android:background="@drawable/round_corner"
           android:layout_toLeftOf="@+id/shareBtn"
-          android:layout_toStartOf="@+id/shareBtn" />
+          android:layout_toStartOf="@+id/shareBtn"
+          android:onClick="openRegisterComment" />
 
         <ImageButton
           android:id="@+id/shareBtn"
