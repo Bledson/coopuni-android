@@ -16,6 +16,7 @@ public class RegisterPostActivity extends AppCompatActivity {
   private static final int FOTO = 1;
   private ImageButton fotoBtn;
   private Spinner areaSpinner;
+  private Spinner categorySpinner;
 
   public void openRegisterComment(View view) {
     Intent intent = new Intent(this, CommentActivity.class);
@@ -36,6 +37,7 @@ public class RegisterPostActivity extends AppCompatActivity {
       }
     });
 
+    categorySpinner = (Spinner) findViewById(R.id.categoriaSpinner);
     areaSpinner = (Spinner) findViewById(R.id.areaSpinner);
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -53,5 +55,11 @@ public class RegisterPostActivity extends AppCompatActivity {
 
       fotoBtn.setImageBitmap(foto);
     }
+  }
+
+  public void registerPost(View view) {
+    areaSpinner = (Spinner) findViewById(R.id.areaSpinner);
+    int areaID = areaSpinner.getSelectedItemPosition() + 1;
+
   }
 }

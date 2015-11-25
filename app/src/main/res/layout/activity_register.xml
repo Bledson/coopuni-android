@@ -141,6 +141,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/white"
+        android:onClick="login"
         android:text="faça login"
         android:id="@+id/textView11"
         android:textStyle="bold"

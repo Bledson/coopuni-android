@@ -23,7 +23,7 @@ import com.android.volley.toolbox.Volley;
 import br.edu.ufrn.imd.coopuni.request.OAuthTokenRequest;
 
 public class LoginActivity extends AppCompatActivity {
-    private String url = "http://10.0.0.105:8080/coopuni/rest/members/login/";
+    private String url = "http://10.0.0.104:8080/coopuni/rest/members/login/";
     private static String TAG = MainActivity.class.getSimpleName();
     private Button btnLogin;
 

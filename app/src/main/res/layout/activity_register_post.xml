@@ -30,7 +30,6 @@
     android:id="@+id/areaSpinner"
     android:layout_marginTop="100dp"
     android:layout_below="@+id/textView14"
-    android:layout_toEndOf="@+id/textView2"
     android:layout_alignLeft="@+id/categoriaSpinner"
     android:layout_alignStart="@+id/categoriaSpinner"
     android:spinnerMode="dropdown" />
