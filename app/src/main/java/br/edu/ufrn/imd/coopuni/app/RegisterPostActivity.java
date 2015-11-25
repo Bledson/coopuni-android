@@ -9,14 +9,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.api.client.json.Json;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegisterPostActivity extends AppCompatActivity {
   private static final int FOTO = 1;
   private ImageButton fotoBtn;
   private Spinner areaSpinner;
   private Spinner categorySpinner;
+  private EditText description;
+  private RadioGroup radioGroup;
 
   public void openRegisterComment(View view) {
     Intent intent = new Intent(this, CommentActivity.class);
@@ -39,6 +54,9 @@ public class RegisterPostActivity extends AppCompatActivity {
 
     categorySpinner = (Spinner) findViewById(R.id.categoriaSpinner);
     areaSpinner = (Spinner) findViewById(R.id.areaSpinner);
+    description = (EditText) findViewById(R.id.descriptionTxt);
+    radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
         R.array.areas_array, android.R.layout.simple_spinner_item);
@@ -57,9 +75,76 @@ public class RegisterPostActivity extends AppCompatActivity {
     }
   }
 
-  public void registerPost(View view) {
-    areaSpinner = (Spinner) findViewById(R.id.areaSpinner);
-    int areaID = areaSpinner.getSelectedItemPosition() + 1;
+  private int choosetype(){
+    int typeid = radioGroup.getCheckedRadioButtonId();
+    if(typeid == R.id.denunciaBtn)
+      typeid = 1;
+    else
+      typeid= 2;
+    return typeid;
+  }
+
+
+  private int choosecategory() {
+    return 1;
+  }
+
+  private int chooseArea() {
+    return 1;
+  }
+
+  private int getUser() {
+    return 4;
+  }
+
+  private JSONObject createJsonObj() {
+    JSONObject post = new JSONObject();
+    JSONObject category = new JSONObject();
+    JSONObject area = new JSONObject();
+    JSONObject member = new JSONObject();
+    //JSONObject geolocation = new JSONObject();
+
+    String desc = description.getText().toString();
+    int typeid =  choosetype();
+    int categoryid = choosecategory();
+    int areaid = chooseArea();
+    int userid = getUser();
+
+    try {
+      category.put("id",categoryid);
+      area.put("id",areaid);
+      member.put("id",userid);
+
+      post.put("description", desc);
+      post.put("category", category);
+      post.put("area",area);
+      post.put("type",typeid);
+      post.put("member",member);
+    }catch (JSONException e) {
+
+    }
+    return post;
+  }
+
+  public void registerPost(View v) {
+    JSONObject postObject = this.createJsonObj();
+    String url = "http://10.0.0.104:8080/coopuni/rest/posts";
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postObject,
+            new Response.Listener<JSONObject>() {
+              @Override
+              public void onResponse(JSONObject jsonObject) {
+
+              }
+            }, new Response.ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError volleyError) {
+
+      }
+    });
+    RequestQueue queue = Volley.newRequestQueue(this);
+    queue.add(jsonObjectRequest);
 
   }
+
+
 }

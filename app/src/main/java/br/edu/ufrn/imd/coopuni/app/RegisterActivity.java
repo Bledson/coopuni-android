@@ -21,8 +21,7 @@ import com.google.api.client.json.Json;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -53,28 +52,28 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private JSONObject createJsonObj() {
-        JSONObject post = new JSONObject();
+        JSONObject user = new JSONObject();
         String pw= pwtxt.getText().toString();
-        String user = usertxt.getText().toString();
+        String username = usertxt.getText().toString();
         String email = emailtxt.getText().toString();
         try {
-            post.put("pw",pw);
-            post.put("email",email);
-            post.put("username",user);
+            user.put("pw",pw);
+            user.put("email",email);
+            user.put("username",username);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return post;
+        return user;
     }
 
     public void register(View v) {
-        JSONObject postObject = this.createJsonObj();
+        JSONObject userObject = this.createJsonObj();
         String url_ = "http://10.0.0.104:8080/coopuni/rest/members";
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postObject,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, userObject,
                 new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
-
+                openLogin();
             }
         }, new Response.ErrorListener() {
             @Override
