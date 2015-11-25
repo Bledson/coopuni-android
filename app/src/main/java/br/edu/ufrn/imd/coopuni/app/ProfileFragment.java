@@ -40,8 +40,8 @@ public class ProfileFragment extends Fragment {
     RecyclerViewHeader header = RecyclerViewHeader.fromXml(getContext(), R.layout.header_profile);
     header.attachTo(recyclerView);
 
-    adapter = new PostCardAdapter(this.getActivity());
-    recyclerView.setAdapter(adapter);
+//    adapter = new PostCardAdapter(this.getActivity());
+//    recyclerView.setAdapter(adapter);
     return view;
   }
 }
