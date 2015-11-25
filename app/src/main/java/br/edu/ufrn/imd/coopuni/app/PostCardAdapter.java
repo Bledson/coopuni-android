@@ -24,17 +24,13 @@ import br.edu.ufrn.imd.coopuni.parsers.ParsePost;
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHolder> {
 
     List<Post> posts;
-//  private Context ctx;
 
     public PostCardAdapter(List<Post> posts) {
-//    super();
-//    ctx = context;
         this.posts = posts;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-//    fetch();
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.card_post, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(v);
@@ -61,38 +57,6 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-
-//    public void like(View view) {
-//
-//    }
-//
-//    public void fetch() {
-//        String JSON_URL = "http://10.0.0.104:8080/coopuni/rest/posts";
-//        StringRequest stringRequest = new StringRequest(JSON_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        showJSON(response);
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                    }
-//                });
-//        int socketTimeout = 30000;
-//        RequestQueue requestQueue = Volley.newRequestQueue(ctx);
-////    RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-////    stringRequest.setRetryPolicy(policy);
-//        requestQueue.add(stringRequest);
-//    }
-//
-//    private void showJSON(String json) {
-//        ParsePost pp = new ParsePost(json);
-//        posts = pp.parsePostsJSON();
-//    }
-
 
     class ViewHolder extends RecyclerView.ViewHolder {
 

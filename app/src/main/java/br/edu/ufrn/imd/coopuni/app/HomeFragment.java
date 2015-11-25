@@ -42,12 +42,6 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
-//    layoutManager = new LinearLayoutManager(getContext());
-//    recyclerView.setLayoutManager(layoutManager);
-
-//    adapter = new PostCardAdapter(this.getActivity());
-//    recyclerView.setAdapter(adapter);
-
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
@@ -67,10 +61,12 @@ public class HomeFragment extends Fragment {
                             JSONObject jsonObject = response.getJSONObject(i);
                             Post post = new Post();
                             if (!jsonObject.isNull("description")) {
-                                post.setDescription(jsonObject.getString("description"));;
+                                post.setDescription(jsonObject.getString("description"));
+                                ;
                             }
                             if (!jsonObject.isNull("username")) {
-                                post.setDescription(jsonObject.getString("username"));;
+                                post.setDescription(jsonObject.getString("username"));
+                                ;
                             }
                             posts.add(i, post);
                         }
