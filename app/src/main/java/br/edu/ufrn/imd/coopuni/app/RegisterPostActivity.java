@@ -25,6 +25,9 @@ import com.google.api.client.json.Json;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class RegisterPostActivity extends AppCompatActivity {
   private static final int FOTO = 1;
   private ImageButton fotoBtn;
@@ -97,6 +100,12 @@ public class RegisterPostActivity extends AppCompatActivity {
     return 4;
   }
 
+  private String getDateCreate(){
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    String currentDate = sdf.format(new Date());
+    return currentDate;
+  }
+
   private JSONObject createJsonObj() {
     JSONObject post = new JSONObject();
     JSONObject category = new JSONObject();
@@ -109,6 +118,7 @@ public class RegisterPostActivity extends AppCompatActivity {
     int categoryid = choosecategory();
     int areaid = chooseArea();
     int userid = getUser();
+    String date = this.getDateCreate();
 
     try {
       category.put("id",categoryid);
@@ -116,6 +126,7 @@ public class RegisterPostActivity extends AppCompatActivity {
       member.put("id",userid);
 
       post.put("description", desc);
+      post.put("createdAt",date);
       post.put("category", category);
       post.put("area",area);
       post.put("type",typeid);
