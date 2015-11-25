@@ -22,4 +22,5 @@
   <string name="title_activity_register_post">RegisterPost</string>
 
   <string name="hello_world">Hello world!</string>
+  <string name="title_activity_comment">CommentActivity</string>
 </resources>

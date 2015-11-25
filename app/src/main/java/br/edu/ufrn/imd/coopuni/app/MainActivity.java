@@ -2,7 +2,6 @@ package br.edu.ufrn.imd.coopuni.app;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void openRegisterPost(View view) {
-    Intent intent = new Intent(this, RegisterPost.class);
+    Intent intent = new Intent(this, RegisterPostActivity.class);
     startActivity(intent);
   }
 

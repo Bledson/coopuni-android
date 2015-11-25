@@ -27,8 +27,12 @@
         <activity android:name=".RegisterActivity" >
         </activity>
         <activity
-            android:name=".RegisterPost"
+            android:name=".RegisterPostActivity"
             android:label="@string/title_activity_register_post" >
+        </activity>
+        <activity
+            android:name=".CommentActivity"
+            android:label="@string/title_activity_comment" >
         </activity>
     </application>
 
