@@ -44,5 +44,6 @@
     app:elevation="6dp"
     app:pressedTranslationZ="12dp"
     app:backgroundTint="@color/accent"
+    app:src="@android:drawable/ic_suggestions_add"
     android:onClick="openRegisterPost" />
 </android.support.design.widget.CoordinatorLayout>
