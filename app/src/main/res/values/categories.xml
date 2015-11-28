@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_array">
+        <item>Sala de Aula</item>
+        <item>Corredores</item>
+        <item>Cantina</item>
+        <item>Segurança</item>
+        <item>Banheiros</item>
+        <item>Restaurante Universitário</item>
+        <item>Biblioteca</item>
+        <item>Espaço de Convivência</item>
+        <item>Estacionamento</item>
+    </string-array>
+</resources>

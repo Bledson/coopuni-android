@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -62,11 +64,16 @@ public class RegisterPostActivity extends AppCompatActivity {
 
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        R.array.areas_array, android.R.layout.simple_spinner_item);
+            R.array.areas_array, android.R.layout.simple_spinner_item);
+
+    ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this,
+            R.array.categories_array, android.R.layout.simple_spinner_item);
 
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
     areaSpinner.setAdapter(adapter);
+    categorySpinner.setAdapter(adapterCategory);
   }
 
   @Override
@@ -89,22 +96,19 @@ public class RegisterPostActivity extends AppCompatActivity {
 
 
   private int choosecategory() {
-    return 1;
+    return categorySpinner.getSelectedItemPosition() + 1;
   }
 
   private int chooseArea() {
-    return 1;
+    return areaSpinner.getSelectedItemPosition() + 1;
+
   }
 
   private int getUser() {
     return 4;
   }
 
-  private String getDateCreate(){
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-    String currentDate = sdf.format(new Date());
-    return currentDate;
-  }
+
 
   private JSONObject createJsonObj() {
     JSONObject post = new JSONObject();
@@ -118,7 +122,7 @@ public class RegisterPostActivity extends AppCompatActivity {
     int categoryid = choosecategory();
     int areaid = chooseArea();
     int userid = getUser();
-    String date = this.getDateCreate();
+
 
     try {
       category.put("id",categoryid);
@@ -126,7 +130,6 @@ public class RegisterPostActivity extends AppCompatActivity {
       member.put("id",userid);
 
       post.put("description", desc);
-      post.put("createdAt",date);
       post.put("category", category);
       post.put("area",area);
       post.put("type",typeid);
@@ -137,6 +140,12 @@ public class RegisterPostActivity extends AppCompatActivity {
     return post;
   }
 
+  private void openHome() {
+    Intent i = new Intent(this,MainActivity.class);
+    startActivity(i);
+
+  }
+
   public void registerPost(View v) {
     JSONObject postObject = this.createJsonObj();
     String url = "http://10.3.129.150:8080/coopuni/rest/posts";
@@ -144,7 +153,8 @@ public class RegisterPostActivity extends AppCompatActivity {
             new Response.Listener<JSONObject>() {
               @Override
               public void onResponse(JSONObject jsonObject) {
-
+                Log.d("resposta", jsonObject.toString());
+                openHome();
               }
             }, new Response.ErrorListener() {
       @Override
