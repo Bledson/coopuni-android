@@ -23,7 +23,8 @@ import com.android.volley.toolbox.Volley;
 import br.edu.ufrn.imd.coopuni.request.OAuthTokenRequest;
 
 public class LoginActivity extends AppCompatActivity {
-    private String url = "http://10.3.129.150:8080/coopuni/rest/members/login/";
+    private String ip = "http://192.168.0.110:8080/";
+    private String url = ip+"coopuni/rest/members/login/";
     private static String TAG = MainActivity.class.getSimpleName();
     private Button btnLogin;
 
@@ -63,41 +64,40 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logar(View v) {
-//        String user = txtusername.getText().toString();
-//        String pw = txtpw.getText().toString();
-//        String LOGIN_URL = url + user + "/" + pw;
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, LOGIN_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        if(response != null){
-//                            openHome(response);
-//                        }else {
-//                            Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
-//                    }
-//                }){
-//
-//        };
-//        int socketTimeout = 30000;
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        stringRequest.setRetryPolicy(policy);
-//        requestQueue.add(stringRequest);
-        openHome("asdasd");
+        String user = txtusername.getText().toString();
+        String pw = txtpw.getText().toString();
+        String LOGIN_URL = url + user + "/" + pw;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LOGIN_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response != null){
+                            openHome(response);
+                        }else {
+                            Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    }
+                }){
+
+        };
+        int socketTimeout = 30000;
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        requestQueue.add(stringRequest);
     }
 
     private void openHome(String token){
-//        SharedPreferences sharedPref = getPreferences(Activity.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putString("token", token);
-//        editor.commit();
+        SharedPreferences sharedPref = getPreferences(Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("token", token);
+        editor.commit();
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

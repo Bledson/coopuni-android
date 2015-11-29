@@ -29,6 +29,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    private String ip = "http://192.168.0.110:8080/";
+    private String url = ip+"coopuni/rest/posts";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        String url = "http://10.3.129.150:8080/coopuni/rest/posts";
+
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
@@ -62,7 +64,9 @@ public class HomeFragment extends Fragment {
                             Post post = new Post();
                             if (!jsonObject.isNull("description")) {
                                 post.setDescription(jsonObject.getString("description"));
-                                ;
+                                String id = jsonObject.getString("id");
+                                post.setId(Integer.valueOf(id));
+
                             }
                             if (!jsonObject.isNull("username")) {
                                 post.setDescription(jsonObject.getString("username"));
