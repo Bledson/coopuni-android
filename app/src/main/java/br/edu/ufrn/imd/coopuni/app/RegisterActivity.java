@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText pwtxt;
     private EditText usertxt;
     private EditText emailtxt;
-    private String ip = "http://10.0.0.104:8080/";
+    private String ip = "http://10.3.129.150:8080/";
     private String url = ip+"coopuni/rest/members";
     @Override
     protected void onCreate(Bundle savedInstanceState) {

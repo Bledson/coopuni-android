@@ -37,7 +37,7 @@ public class RegisterPostActivity extends AppCompatActivity {
   private Spinner categorySpinner;
   private EditText description;
   private RadioGroup radioGroup;
-  private String ip = "http://192.168.0.14:8080/";
+  private String ip = "http://10.3.129.150:8080/";
 
   public void openRegisterComment(View view) {
     Intent intent = new Intent(this, CommentActivity.class);
@@ -152,7 +152,6 @@ public class RegisterPostActivity extends AppCompatActivity {
               @Override
               public void onResponse(JSONObject jsonObject) {
                 Log.d("resposta", jsonObject.toString());
-                openHome();
               }
             }, new Response.ErrorListener() {
       @Override
@@ -162,7 +161,7 @@ public class RegisterPostActivity extends AppCompatActivity {
     });
     RequestQueue queue = Volley.newRequestQueue(this);
     queue.add(jsonObjectRequest);
-
+    openHome();
   }
 
 

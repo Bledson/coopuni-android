@@ -1,12 +1,78 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:paddingLeft="@dimen/activity_horizontal_margin"
-  android:paddingRight="@dimen/activity_horizontal_margin"
-  android:paddingTop="@dimen/activity_vertical_margin"
-  android:paddingBottom="@dimen/activity_vertical_margin"
-  tools:context="br.edu.ufrn.imd.coopuni.app.CommentActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context="br.edu.ufrn.imd.coopuni.app.CommentActivity"
+    android:focusableInTouchMode="false">
+
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardcomment"
+      android:layout_gravity="center"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_gravity="left|bottom"
+        android:focusable="true">
+
+      <ImageView
+          android:id="@+id/userImg"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          android:layout_margin="8dp"
+          android:src="@drawable/ic_account"
+          android:background="@drawable/circle" />
+
+      <TextView
+          android:id="@+id/username"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:layout_alignTop="@+id/userImg"
+          android:layout_toRightOf="@+id/userImg" />
+
+      <ImageView
+          android:id="@+id/img"
+          android:layout_width="match_parent"
+          android:layout_marginRight="5dp"
+          android:layout_marginLeft="5dp"
+          android:layout_height="280dp"
+          android:paddingTop="8dp"
+          android:paddingBottom="8dp"
+          android:background="@drawable/sala_aula"
+          android:layout_below="@+id/userImg" />
+
+      <TextView
+          android:id="@+id/description"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/img"
+          android:layout_margin="8dp" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/categorytxt"
+          android:layout_below="@+id/description"
+          android:layout_alignLeft="@+id/description"
+          android:layout_alignStart="@+id/description" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/areatxt"
+          android:layout_alignBottom="@+id/categorytxt"
+          android:layout_alignRight="@+id/description"
+          android:layout_alignEnd="@+id/description" />
+
+
 
   <EditText
     android:layout_width="fill_parent"
@@ -19,7 +85,8 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
     android:layout_toLeftOf="@+id/imageButton"
-    android:layout_toStartOf="@+id/imageButton" />
+    android:layout_toStartOf="@+id/imageButton"
+      android:focusable="true"/>
 
   <ImageButton
     android:layout_width="wrap_content"
@@ -29,4 +96,6 @@
     android:layout_alignParentRight="true"
     android:layout_alignParentEnd="true"
     android:src="@android:drawable/ic_menu_send" />
+    </RelativeLayout>
+  </android.support.v7.widget.CardView>
 </RelativeLayout>

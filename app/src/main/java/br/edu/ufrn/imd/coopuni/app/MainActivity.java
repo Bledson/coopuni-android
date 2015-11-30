@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
   private FloatingActionButton fab;
   private String jsonResponse;
   private TextView username;
-  private String ip = "http://10.0.0.104:8080/";
+  private String ip = "http://10.3.129.150:8080/";
   private String url = ip+"coopuni/rest/members/login/";
 
 

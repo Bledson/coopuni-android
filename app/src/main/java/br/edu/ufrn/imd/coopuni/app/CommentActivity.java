@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,20 +24,44 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import br.edu.ufrn.imd.coopuni.model.Post;
+
 public class CommentActivity extends AppCompatActivity {
 
-    private Long postID;
+    private Post postobj;
     private EditText content;
+    private String ip = "http://10.3.129.150:8080/";
+    private TextView username;
+    private TextView category;
+    private TextView area;
+    private TextView description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
 
-        content = (EditText) findViewById(R.id.editText);
+        Intent i = getIntent();
+        Bundle b = new Bundle();
+        b = getIntent().getExtras();
+        postobj = (Post) b.getSerializable("post");
 
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        postID = sharedPref.getLong("post_id", 22);
+        username = (TextView)findViewById(R.id.username);
+        //username.setText(postobj.getUsername());
+
+        category = (TextView) findViewById(R.id.categorytxt);
+        category.setText(postobj.getCategory());
+
+        description = (TextView) findViewById(R.id.description);
+        description.setText(postobj.getDescription());
+
+        area = (TextView) findViewById(R.id.areatxt);
+        area.setText(postobj.getArea());
+
+
+        content = (EditText) findViewById(R.id.editText);
+        content.requestFocus();
+
 
     }
 
@@ -70,7 +96,7 @@ public class CommentActivity extends AppCompatActivity {
 
         String content = this.content.getText().toString();
         int userid = 1;
-        int postid = 12;
+        long postid = postobj.getId();
 
 
         try {
@@ -88,7 +114,7 @@ public class CommentActivity extends AppCompatActivity {
 
     public void registerComment(View view) {
         JSONObject commentObject = this.createJsonObj();
-        String url = "http://192.168.0.10:8080/coopuni/rest/comment";
+        String url = ip+"coopuni/rest/comment";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, commentObject,
                 new Response.Listener<JSONObject>() {
                     @Override

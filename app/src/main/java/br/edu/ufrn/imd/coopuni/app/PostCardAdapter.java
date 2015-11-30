@@ -1,10 +1,13 @@
 package br.edu.ufrn.imd.coopuni.app;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -25,7 +28,7 @@ import br.edu.ufrn.imd.coopuni.model.Post;
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHolder> {
 
     List<Post> posts;
-    private String ip = "http://10.0.0.104:8080/";
+    private String ip = "http://10.3.129.150:8080/";
 
     public PostCardAdapter(List<Post> posts) {
         this.posts = posts;
@@ -39,6 +42,8 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         return viewHolder;
     }
 
+
+
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final Post post = posts.get(i);
@@ -49,6 +54,16 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         viewHolder.userName.setText(post.getUsername());
         viewHolder.category.setText(post.getCategory());
         viewHolder.area.setText(post.getArea());
+        viewHolder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(),CommentActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("post",post);
+                i.putExtras(bundle);
+                v.getContext().startActivity(i);
+            }
+        });
         viewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +71,22 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
                 int new_value = Integer.valueOf(value) + 1;
                 viewHolder.likes.setText(String.valueOf(new_value));
                 long id = post.getId();
+                viewHolder.btnLike.setEnabled(false);
+                viewHolder.btnDown.setEnabled(false);
                 String url = ip + "coopuni/rest/posts/like/";
+                fetchvote(v, id, url);
+            }
+        });
+        viewHolder.btnDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String value = viewHolder.downs.getText().toString();
+                int new_value = Integer.valueOf(value) + 1;
+                viewHolder.downs.setText(String.valueOf(new_value));
+                long id = post.getId();
+                viewHolder.btnLike.setEnabled(false);
+                viewHolder.btnDown.setEnabled(false);
+                String url = ip + "coopuni/rest/posts/down/";
                 fetchvote(v, id, url);
             }
         });
@@ -110,17 +140,21 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         public TextView category;
         public TextView area;
         public ToggleButton btnLike;
+        public ToggleButton btnDown;
         public TextView likes;
         public TextView downs;
         public TextView username;
+        public ImageButton comment;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            comment = (ImageButton) itemView.findViewById(R.id.comment);
             area = (TextView) itemView.findViewById(R.id.areatxt);
             category =  (TextView) itemView.findViewById(R.id.categorytxt);
             username = (TextView) itemView.findViewById(R.id.username);
             imgPost = (ImageView) itemView.findViewById(R.id.img);
             likes = (TextView) itemView.findViewById(R.id.likesTxt);
+            btnDown = (ToggleButton) itemView.findViewById(R.id.downvote);
             downs = (TextView) itemView.findViewById(R.id.downvoteTxt);
             btnLike = (ToggleButton) itemView.findViewById(R.id.likeButton);
             description = (TextView) itemView.findViewById(R.id.description);
