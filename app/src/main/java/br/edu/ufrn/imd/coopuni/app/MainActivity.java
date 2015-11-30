@@ -32,22 +32,9 @@ public class MainActivity extends AppCompatActivity {
   private FloatingActionButton fab;
   private String jsonResponse;
   private TextView username;
+  private String ip = "http://10.0.0.104:8080/";
+  private String url = ip+"coopuni/rest/members/login/";
 
-  public void like(View view) {
-    ImageButton likeBtn = (ImageButton) findViewById(R.id.likeButton);
-  }
-
-  public void downvote(View view) {
-    ImageButton downovteBtn = (ImageButton) findViewById(R.id.downvote);
-  }
-
-  public void comment(View view) {
-
-  }
-
-  public void share(View view) {
-
-  }
 
   public void openRegisterPost(View view) {
     Intent intent = new Intent(this, RegisterPostActivity.class);
@@ -85,34 +72,6 @@ public class MainActivity extends AppCompatActivity {
     tabLayout.getTabAt(1).setIcon(R.drawable.ic_account);
   }
 
-  private void reqJson() {
-
-    String urlJsonObj = "http://apitestes.info.ufrn.br/usuario-services/services/usuario/info";
-    OAuthTokenRequest.getInstance().resourceRequest(this, Request.Method.GET, urlJsonObj, new Response.Listener<String>() {
-      @Override
-      public void onResponse(String response) {
-        try {
-          JSONObject jsonObject = new JSONObject(response);
-
-          String nome = jsonObject.getString("nome");
-
-          jsonResponse += "Name: " + nome + "\n\n";
-          username.setText(jsonResponse);
-        } catch (JSONException e) {
-          e.printStackTrace();
-        }
-      }
-    }, new Response.ErrorListener() {
-
-      @Override
-      public void onErrorResponse(VolleyError error) {
-        VolleyLog.d("SAIDA", "Error: " + error.getMessage());
-        Toast.makeText(getApplicationContext(),
-            error.getMessage(), Toast.LENGTH_SHORT).show();
-        // hide the progress dialog
-      }
-    });
-  }
 
 
   @Override

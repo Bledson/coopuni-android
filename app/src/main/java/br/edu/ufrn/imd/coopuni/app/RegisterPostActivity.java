@@ -37,6 +37,7 @@ public class RegisterPostActivity extends AppCompatActivity {
   private Spinner categorySpinner;
   private EditText description;
   private RadioGroup radioGroup;
+  private String ip = "http://192.168.0.14:8080/";
 
   public void openRegisterComment(View view) {
     Intent intent = new Intent(this, CommentActivity.class);
@@ -94,7 +95,6 @@ public class RegisterPostActivity extends AppCompatActivity {
     return typeid;
   }
 
-
   private int choosecategory() {
     return categorySpinner.getSelectedItemPosition() + 1;
   }
@@ -107,8 +107,6 @@ public class RegisterPostActivity extends AppCompatActivity {
   private int getUser() {
     return 4;
   }
-
-
 
   private JSONObject createJsonObj() {
     JSONObject post = new JSONObject();
@@ -148,7 +146,7 @@ public class RegisterPostActivity extends AppCompatActivity {
 
   public void registerPost(View v) {
     JSONObject postObject = this.createJsonObj();
-    String url = "http://10.3.129.150:8080/coopuni/rest/posts";
+    String url = ip+"coopuni/rest/posts";
     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postObject,
             new Response.Listener<JSONObject>() {
               @Override
