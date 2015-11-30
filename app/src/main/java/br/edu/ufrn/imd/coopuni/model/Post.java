@@ -3,14 +3,13 @@ package br.edu.ufrn.imd.coopuni.model;
 import java.io.Serializable;
 import java.util.Date;
 
+
+
 public class Post implements Serializable {
+
   private long id;
 
-  private String photo;
-
-  private String type;
-
-  private String category;
+  private boolean type;
 
   private String description;
 
@@ -22,34 +21,15 @@ public class Post implements Serializable {
 
   private Date updatedAt;
 
+  private String area;
+
+  private String category;
+
+  private Geolocation geolocation;
+
+  private String image;
+
   private String username;
-
-  public Post() {}
-
-  public Post(String category, String type, String description, int likes, int downvotes, String username) {
-    this.category = category;
-    this.type = type;
-    this.description = description;
-    this.likes = likes;
-    this.downvotes = downvotes;
-    this.username = username;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getPhoto() {
-    return photo;
-  }
-
-  public void setPhoto(String photo) {
-    this.photo = photo;
-  }
 
   public long getId() {
     return id;
@@ -59,20 +39,12 @@ public class Post implements Serializable {
     this.id = id;
   }
 
-  public String getType() {
+  public boolean isType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(boolean type) {
     this.type = type;
-  }
-
-  public String getCategory() {
-    return category;
-  }
-
-  public void setCategory(String category) {
-    this.category = category;
   }
 
   public String getDescription() {
@@ -113,5 +85,45 @@ public class Post implements Serializable {
 
   public void setUpdatedAt(Date updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public String getArea() {
+    return area;
+  }
+
+  public void setArea(String area) {
+    this.area = area;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public Geolocation getGeolocation() {
+    return geolocation;
+  }
+
+  public void setGeolocation(Geolocation geolocation) {
+    this.geolocation = geolocation;
   }
 }

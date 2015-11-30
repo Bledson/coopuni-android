@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.api.client.json.Json;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +30,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private String ip = "http://192.168.0.110:8080/";
+    private String ip = "http://10.0.0.104:8080/";
     private String url = ip+"coopuni/rest/posts";
 
     @Override
@@ -64,13 +65,25 @@ public class HomeFragment extends Fragment {
                             Post post = new Post();
                             if (!jsonObject.isNull("description")) {
                                 post.setDescription(jsonObject.getString("description"));
-                                String id = jsonObject.getString("id");
-                                post.setId(Integer.valueOf(id));
-
                             }
-                            if (!jsonObject.isNull("username")) {
-                                post.setDescription(jsonObject.getString("username"));
-                                ;
+                            String id = jsonObject.getString("id");
+                            post.setId(Integer.valueOf(id));
+
+                            String likes = jsonObject.getString("likes");
+                            post.setLikes(Integer.valueOf(likes));
+
+                            String down = jsonObject.getString("downvotes");
+                            post.setDownvotes(Integer.valueOf(down));
+
+                            JSONObject categoryobj = new JSONObject(jsonObject.getString("category"));
+                            post.setCategory(categoryobj.getString("name"));
+
+                            JSONObject areaobj = new JSONObject(jsonObject.getString("area"));
+                            post.setArea(areaobj.getString("name"));
+
+                            if (!jsonObject.isNull("member")) {
+                                JSONObject memberobj = new JSONObject(jsonObject.getString("member"));
+                                post.setDescription(memberobj.getString("username"));
                             }
                             posts.add(i, post);
                         }
@@ -90,21 +103,5 @@ public class HomeFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
 
         return view;
-    }
-
-    public void like(View view) {
-        //
-    }
-
-    public void downvote() {
-        //
-    }
-
-    public void comment() {
-        //
-    }
-
-    public void share() {
-        //
     }
 }
