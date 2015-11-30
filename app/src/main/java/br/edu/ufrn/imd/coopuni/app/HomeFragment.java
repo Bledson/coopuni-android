@@ -1,7 +1,9 @@
 package br.edu.ufrn.imd.coopuni.app;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,6 +34,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private String ip = "http://10.3.129.150:8080/";
     private String url = ip+"coopuni/rest/posts";
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,38 @@ public class HomeFragment extends Fragment {
         adapter = new PostCardAdapter(posts);
         recyclerView.setAdapter(adapter);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
 
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Refresh items
+                refreshItems();
+            }
+        });
+        mSwipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.colorPrimary);
+
+        fetch();
+
+
+        return view;
+    }
+
+    void refreshItems() {
+        // TODO Auto-generated method stub
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                fetch();
+                adapter.notifyDataSetChanged();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 5000);
+    }
+
+
+
+    private void fetch() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
@@ -83,7 +116,7 @@ public class HomeFragment extends Fragment {
 
                             if (!jsonObject.isNull("member")) {
                                 JSONObject memberobj = new JSONObject(jsonObject.getString("member"));
-                                post.setDescription(memberobj.getString("username"));
+                                post.setUsername(memberobj.getString("username"));
                             }
                             posts.add(i, post);
                         }
@@ -101,7 +134,5 @@ public class HomeFragment extends Fragment {
         });
 
         requestQueue.add(jsonArrayRequest);
-
-        return view;
     }
 }
